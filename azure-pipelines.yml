@@ -21,9 +21,8 @@ steps:
       mkdir build
       mkdir build/conf
       echo 'ACCEPT_FSL_EULA = "1"' >> build/conf/local.conf
-      echo 'MACHINE = "coral-dev"' >> build/conf/local.conf
-      echo 'DISTRO = "fslc-wayland"' >> build/conf/local.conf
-      source ./setup-environment build
+      MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
+      cat build/conf/local.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
       bitbake core-image-base
