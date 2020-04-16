@@ -40,3 +40,6 @@ steps:
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
       bitbake core-image-base
+
+- publish: coral/tmp/deploy/images/coral-dev/
+  artifact: $(PLATFORM)_build
