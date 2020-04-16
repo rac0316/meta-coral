@@ -12,7 +12,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      
+      sudo apt-get install repo
       mkdir coral && cd coral
       repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b warrior
       repo sync
