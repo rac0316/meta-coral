@@ -35,8 +35,9 @@ steps:
     targetType: 'inline'
     script: |
       cd coral
-      MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
       cat conf/local.conf
-      echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
-      echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
-      bitbake core-image-base
+      #MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
+
+      #echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
+      #echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
+      #bitbake core-image-base
