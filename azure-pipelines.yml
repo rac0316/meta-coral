@@ -1,7 +1,4 @@
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
 - master
@@ -10,7 +7,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- bash:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
       mkdir coral && cd coral
       repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b warrior
       repo sync
@@ -20,5 +22,7 @@ steps:
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
       bitbake core-image-base
-  displayName: 'Run a one-line script'
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
