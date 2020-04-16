@@ -20,13 +20,22 @@ steps:
       git clone https://github.com/mirzak/meta-coral.git sources/meta-coral -b warrior
       mkdir build
       mkdir build/conf
-      echo 'ACCEPT_FSL_EULA = "1"' >> build/conf/local.conf
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(build.sourcesdirectory)'
+    Contents: 'local.conf'
+    TargetFolder: '$(build.artifactstagingdirectory)/coral/build/conf'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
       MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
       cat conf/local.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
       bitbake core-image-base
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
