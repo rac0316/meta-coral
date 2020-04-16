@@ -28,7 +28,7 @@ steps:
   inputs:
     SourceFolder: '$(build.sourcesdirectory)'
     Contents: 'local.conf'
-    TargetFolder: '/home/vsts/work/_temp/coral/build/conf'
+    TargetFolder: '$(build.sourcesdirectory)/coral/build/conf'
 
 - task: Bash@3
   inputs:
