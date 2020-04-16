@@ -35,7 +35,7 @@ steps:
     targetType: 'inline'
     script: |
       cd coral
-      cat conf/local.conf
+      cat build/conf/local.conf
       #MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
 
       #echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
