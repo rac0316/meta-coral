@@ -20,9 +20,8 @@ steps:
       git clone https://github.com/mirzak/meta-coral.git sources/meta-coral -b warrior
       mkdir build
       mkdir build/conf
-      echo "ACCEPT_FSL_EULA = 1" >> build/conf/local.conf
+      echo 'ACCEPT_FSL_EULA = "1"' >> build/conf/local.conf
       MACHINE=coral-dev DISTRO=fslc-wayland source ./setup-environment build
-      read -n 6 -s -r -p "Press any key to continue"
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-clang"' >> conf/bblayers.conf
       echo 'BBLAYERS += "${BSPDIR}/sources/meta-coral"' >> conf/bblayers.conf
       bitbake core-image-base
